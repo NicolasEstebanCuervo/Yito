@@ -1,0 +1,12 @@
+export const BluePurple = "#4747D7";
+export const BluePurpleTransparent = "#4747d724";
+export const GoldenSun = "#FFC131";
+export const DeepMidnight = "#151536";
+export const DeepNightBlue = "#23234be4";
+export const CharcoalGray = "#2a2b2b";
+export const SlateGray = "#59616c";
+export const White = "#fff";
+export const SoftWhite = "#f5f5f5";
+export const SoftWhiteTransparent = "#f9f9f980";
+export const LightSilver = "#c0bfbf";
+export const LightGray = "#d1d1d1";
