@@ -2,8 +2,8 @@
 
    <img src="https://media3.giphy.com/media/v1.Y2lkPTc5MGI3NjExcm9xcDd2enI0emUydXkydjJ5bDJ0dm11dXJ4eG1vN3lveWt2M3NxdSZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/QL8k5zCiNnoUPaABuY/giphy.gif" width="300">   
    <h1 align="center">Yito (Replica) 🎨 - Finalizado </h1>
-    <h3>Este proyecto no es de mi autoría. Simplemente repliqué el diseño de la web porque me pareció muy interesante y me gustó mucho su estética.
-        Puedes visitar la web original en el siguiente enlace: https://yito.digital/
+    <h3>Este proyecto no es de mi autoría; simplemente recreé el diseño de la web original porque me pareció interesante. Mi objetivo fue poner a prueba conceptos como animaciones, SEO, organización y otros aspectos del desarrollo web.
+         Puedes visitar la web original en el siguiente enlace: https://yito.digital/
     </h3>
 </div>
 
