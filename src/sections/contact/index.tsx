@@ -52,29 +52,19 @@ export default function Contact() {
                     />
                 </CaseStudyAuthorDetails>
             </CaseStudyContent>
-            <Container>
+            <InlineWidgetWrapper>
                 <InlineWidget
-                styles={{width:"100%",height:"100%",overflowY:"hidden"}}
+                    styles={{
+                        width: "100%",
+                        height: "100%",
+                        overflowY: "hidden",
+                    }}
                     url="https://calendly.com/cuervorojas942/30min"
                 ></InlineWidget>
-            </Container>
+            </InlineWidgetWrapper>
         </ContactSection>
     );
 }
-
-const Container = styled.div`
-    width: 50%;
-    height: 850px;
-    overflow-y: hidden;
-
-    @media (max-width: 1100px) {
-        width: 80%;
-    }
-
-    @media (max-width: 800px) {
-        width: 100%;
-    }
-`;
 
 const ContactSection = styled(SectionContainer)`
     background: url(${backgroundHeader});
@@ -107,4 +97,16 @@ const CaseStudyAuthorDetails = styled.div`
     gap: 0.5rem;
 `;
 
+const InlineWidgetWrapper = styled.div`
+    width: 50%;
+    height: 850px;
+    overflow-y: hidden;
 
+    @media (max-width: 1100px) {
+        width: 80%;
+    }
+
+    @media (max-width: 800px) {
+        width: 100%;
+    }
+`;
