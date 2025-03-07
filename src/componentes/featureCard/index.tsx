@@ -5,7 +5,7 @@ import { SmallText, SmallerText } from "../../styles/fonts";
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 
-interface FeatureCardProps {
+interface IFeatureCardProps {
     cardHeading: string;
     cardContent: string;
     imageIndex: number;
@@ -19,15 +19,15 @@ function FeatureCard({
     imageIndex,
     setImage,
     isActive,
-}: FeatureCardProps) {
+}: IFeatureCardProps) {
     return (
-        <FeatureCardWrapper
+        <FeatureCardContainer
             isActive={isActive}
             onHoverStart={() => setImage(imageIndex)}
         >
             <SmallText fontWeight="bold">{cardHeading}</SmallText>
             <SmallerText>{cardContent}</SmallerText>
-        </FeatureCardWrapper>
+        </FeatureCardContainer>
     );
 }
 
@@ -61,8 +61,8 @@ export default function FeatureSection() {
             : "";
 
     return (
-        <FeatureWrapper>
-            <FeatureCardsWrapper>
+        <FeatureContainer>
+            <FeatureCardsContainer>
                 <FeatureCard
                     isActive={activeImageIndex === 1}
                     cardHeading="Your interactive portal"
@@ -84,29 +84,33 @@ export default function FeatureSection() {
                     imageIndex={3}
                     setImage={setActiveImageIndex}
                 />
-            </FeatureCardsWrapper>
+            </FeatureCardsContainer>
             <FeatureImageWrapper src={currentImageSrc} alt={currentImageAlt} />
-        </FeatureWrapper>
+        </FeatureContainer>
     );
 }
 
-const FeatureWrapper = styled.div`
+interface IFeatureCardStylesProps {
+    isActive: boolean;
+}
+
+const FeatureContainer = styled.div`
     display: flex;
     justify-content: center;
     gap: 2rem;
-    
+
     @media (max-width: 1200px) {
         flex-direction: column;
     }
 `;
 
-const FeatureCardsWrapper = styled.div`
+const FeatureCardsContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
 `;
 
-const FeatureCardWrapper = styled(motion.div)<{ isActive: boolean }>`
+const FeatureCardContainer = styled(motion.div)<IFeatureCardStylesProps>`
     display: flex;
     flex-direction: column;
     padding: 1rem 2rem;

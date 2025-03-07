@@ -22,7 +22,7 @@ import {
 import { GradientHorizontalLineSVG } from "../../assets/SVGFigures";
 import { SectionContainer } from "../../styles/sectionContainer";
 import SectionHeader from "../../componentes/sectionHeader";
-import PlanCustomCard from "../../componentes/planCustomCard";
+import CustomPlanCard from "../../componentes/customPlanCard";
 import PricingCard from "../../componentes/pricingCard";
 import PricingCustomcard from "../../componentes/pricingCustomCard";
 
@@ -105,14 +105,14 @@ export default function Pricing() {
     ];
 
     return (
-        <SectionContainer className="section--pricing">
+        <PricingSection as="section" id="pricingSection">
             <SectionHeader
                 sectionTitle="Pick your perfect plan"
                 sectionSubtitle="Simple pricing, zero headaches. Choose a plan that fits and let's get to work!"
                 overlineText="PRICING"
             />
 
-            <PricingCardsWrapper>
+            <PricingCardsContainer>
                 <PricingCustomcard
                     cardHeading="Customised"
                     cardContent="Best for scaling businesses with high-volume needs. Reach out to us today to tailor a package that meets your specific requirements."
@@ -139,17 +139,17 @@ export default function Pricing() {
                     cardServices={developmentServices}
                     borderColor={Color.BluePurple}
                 />
-            </PricingCardsWrapper>
-            <SectionHeaderWithSvg>
+            </PricingCardsContainer>
+            <SectionHeaderPlanCustom>
                 <SectionHeader
                     sectionTitle="Customise your plan"
                     sectionSubtitle="Enhance your plan with add-ons, designed to fit your unique needs."
                     overlineText="PRICING"
                 />
                 <GradientHorizontalLineSVG />
-            </SectionHeaderWithSvg>
-            <CustomPlanCardsWrapper>
-                <PlanCustomCard
+            </SectionHeaderPlanCustom>
+            <CustomPlanCardsContainer>
+                <CustomPlanCard
                     icon={<LightningIcon />}
                     cardTagText="All plans"
                     cardHeading="Yito Boost"
@@ -158,7 +158,7 @@ export default function Pricing() {
                     cardDuration="/week"
                 />
 
-                <PlanCustomCard
+                <CustomPlanCard
                     icon={<MessageCheckIcon />}
                     cardTagText="All plans"
                     cardHeading="Dedicated Comms"
@@ -167,7 +167,7 @@ export default function Pricing() {
                     cardDuration="/month"
                 />
 
-                <PlanCustomCard
+                <CustomPlanCard
                     icon={<UserPlusIcon />}
                     cardTagText="All plans"
                     cardHeading="Invite Team Members"
@@ -175,23 +175,25 @@ export default function Pricing() {
                     cardPrice="$16"
                     cardDuration="/user/month"
                 />
-            </CustomPlanCardsWrapper>
-        </SectionContainer>
+            </CustomPlanCardsContainer>
+        </PricingSection>
     );
 }
 
-const SectionHeaderWithSvg = styled.section`
+const PricingSection = styled(SectionContainer)``;
+
+const SectionHeaderPlanCustom = styled.section`
     position: relative;
 `;
 
-const PricingCardsWrapper = styled.section`
+const PricingCardsContainer = styled.section`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
     gap: 1rem;
 `;
 
-const CustomPlanCardsWrapper = styled.section`
+const CustomPlanCardsContainer = styled.section`
     display: flex;
     justify-content: center;
     flex-wrap: wrap;

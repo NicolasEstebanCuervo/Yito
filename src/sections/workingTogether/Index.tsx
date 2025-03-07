@@ -5,7 +5,7 @@ import { SectionContainer } from "../../styles/sectionContainer";
 
 export default function WorkingTogether() {
     return (
-        <WorkingTogetherSection>
+        <WorkingTogetherSection as="section">
             <SectionHeader
                 sectionTitle="Go with the workflow"
                 sectionSubtitle="We've refined how we work to make sure your projects flow smoothly, from start to finish."

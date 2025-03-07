@@ -1,19 +1,15 @@
 import styled from "@emotion/styled";
 import * as Color from "../../styles/colors";
 import { RightArrowIcon } from "../../assets/SVGIcons";
-import {
-    MediumSmallText,
-    SmallerText,
-    TinyLinkText,
-} from "../../styles/fonts";
+import { MediumSmallText, SmallerText, TinyLinkText } from "../../styles/fonts";
 import { ReactNode } from "react";
 
-interface HowItWorksCardProps {
+interface IHowItWorksCardProps {
     imgSrc: string;
     cardHeading: string;
     cardContent: string;
-    decorativeLine: ReactNode
-    hrefCard: string;
+    decorativeLine: ReactNode;
+    onClick: () => void;
     linkText: string;
 }
 
@@ -22,30 +18,36 @@ export default function HowItWorksCard({
     cardHeading,
     cardContent,
     decorativeLine,
-    hrefCard, 
-    linkText
-}: HowItWorksCardProps) {
+    onClick,
+    linkText,
+}: IHowItWorksCardProps) {
     return (
-        <HowItWorksCardWrapper>
-            <HowItWorksCardImageWrapper>
-                <img src={imgSrc} alt="" />
+        <HowItWorksCardContainer>
+            <HowItWorksCardDecoration>
+                <HowItWorksCardIcon src={imgSrc} alt="" />
                 {decorativeLine}
-            </HowItWorksCardImageWrapper>
+            </HowItWorksCardDecoration>
             <HowItWorksCardContent>
-                <MediumSmallText fontWeight="bold">{cardHeading}</MediumSmallText>
+                <MediumSmallText fontWeight="bold">
+                    {cardHeading}
+                </MediumSmallText>
                 <SmallerText lineHeight="1.8rem">{cardContent}</SmallerText>
-                <HowItWorksCardLinkWrapper>
-                    <TinyLinkText href={hrefCard} color={Color.BluePurple} fontWeight="bold">
+                <HowItWorksCardLink>
+                    <TinyLinkText
+                        onClick={onClick}
+                        color={Color.BluePurple}
+                        fontWeight="bold"
+                    >
                         {linkText}
                     </TinyLinkText>
                     <RightArrowIcon />
-                </HowItWorksCardLinkWrapper>
+                </HowItWorksCardLink>
             </HowItWorksCardContent>
-        </HowItWorksCardWrapper>
+        </HowItWorksCardContainer>
     );
 }
 
-const HowItWorksCardWrapper = styled.article`
+const HowItWorksCardContainer = styled.article`
     display: flex;
     justify-content: center;
     max-width: 700px;
@@ -62,16 +64,16 @@ const HowItWorksCardWrapper = styled.article`
     }
 `;
 
-const HowItWorksCardImageWrapper = styled.div`
+const HowItWorksCardDecoration = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 10px;
+`;
 
-    img {
-        max-height: 80px;
-    }
+const HowItWorksCardIcon = styled.img`
+    max-height: 80px;
 `;
 
 const HowItWorksCardContent = styled.div`
@@ -80,7 +82,7 @@ const HowItWorksCardContent = styled.div`
     gap: 1rem;
 `;
 
-const HowItWorksCardLinkWrapper = styled.div`
+const HowItWorksCardLink = styled.div`
     display: flex;
     align-items: center;
 `;

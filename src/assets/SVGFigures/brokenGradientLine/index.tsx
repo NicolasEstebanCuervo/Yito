@@ -7,7 +7,7 @@ export const BrokenGradientLineSVG = () => (
         viewBox="0 0 5 306"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
-        preserveAspectRatio="none" 
+        preserveAspectRatio="none"
     >
         <line
             x1="2.5"
@@ -40,4 +40,3 @@ const SVG = styled.svg`
         display: none;
     }
 `;
-

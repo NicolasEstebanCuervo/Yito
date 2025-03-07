@@ -13,11 +13,19 @@ import CaseStudy from "./sections/caseStudy";
 import Blog from "./sections/blog";
 import FAQ from "./sections/FAQ/Index";
 import Footer from "./sections/footer";
+import Contact from "./sections/contact";
+
+export const scrollToSection = (id: string) => {
+    const section = document.getElementById(id);
+    if (section) {
+        section.scrollIntoView({ behavior: "smooth" });
+    }
+};
 
 function App() {
     return (
         <Wrapper>
-            <Main>
+            <MainContainer>
                 <Header />
                 <Gallery />
                 <HowItWorks />
@@ -30,7 +38,8 @@ function App() {
                 <CaseStudy />
                 <Blog />
                 <FAQ />
-            </Main>
+                <Contact />
+            </MainContainer>
             <Footer />
         </Wrapper>
     );
@@ -45,7 +54,7 @@ const Wrapper = styled.div`
     align-items: center;
 `;
 
-const Main = styled.main`
+const MainContainer = styled.main`
     display: flex;
     gap: 2rem;
     flex-direction: column;

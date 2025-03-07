@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { MediumSmallText, SmallerText } from "../../styles/fonts";
 
-interface BenefitCardProps {
+interface IBenefitCardProps {
     imgSrc: string;
     imgAlt: string;
     cardHeading: string;
@@ -13,19 +13,19 @@ export default function BenefitCard({
     imgAlt,
     cardHeading,
     cardContent,
-}: BenefitCardProps) {
+}: IBenefitCardProps) {
     return (
-        <BenefitCardWrapper>
+        <BenefitCardContainer>
             <BenefitCardImage src={imgSrc} alt={imgAlt} />
             <BenefitCardContent>
                 <MediumSmallText>{cardHeading}</MediumSmallText>
                 <SmallerText>{cardContent}</SmallerText>
             </BenefitCardContent>
-        </BenefitCardWrapper>
+        </BenefitCardContainer>
     );
 }
 
-const BenefitCardWrapper = styled.article`
+const BenefitCardContainer = styled.article`
     display: flex;
     flex-direction: column;
     gap: 1rem;

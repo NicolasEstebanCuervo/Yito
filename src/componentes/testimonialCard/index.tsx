@@ -2,12 +2,12 @@ import styled from "@emotion/styled";
 import * as Color from "../../styles/colors";
 import { ExtraTinyText, TinyText } from "../../styles/fonts";
 
-interface TestimonialCardProps {
+interface ITestimonialCardProps {
     imgSrc: string;
     imgAlt: string;
-    customerName: string;  
-    customerRole: string;  
-    customerComment: string;  
+    customerName: string;
+    customerRole: string;
+    customerComment: string;
 }
 
 export default function TestimonialCard({
@@ -16,28 +16,28 @@ export default function TestimonialCard({
     customerName,
     customerRole,
     customerComment,
-}: TestimonialCardProps) {
+}: ITestimonialCardProps) {
     return (
-        <TestimonialCardWrapper>
+        <TestimonialCardContainer>
             <TestimonialProfile>
-                <ImageWrapper>
-                    <img src={imgSrc} alt={imgAlt} />
-                </ImageWrapper>
-                <ProfileDetails>
+                <TestimonialImageWrapper>
+                    <TestimonialImage src={imgSrc} alt={imgAlt} />
+                </TestimonialImageWrapper>
+                <TestimonialProfileDetails>
                     <ExtraTinyText color={Color.SoftWhite} fontWeight="bold">
                         {customerName}
                     </ExtraTinyText>
                     <ExtraTinyText color={Color.LightSilver} fontWeight="bold">
                         {customerRole}
                     </ExtraTinyText>
-                </ProfileDetails>
+                </TestimonialProfileDetails>
             </TestimonialProfile>
             <TinyText color={Color.LightSilver}>“{customerComment}”</TinyText>
-        </TestimonialCardWrapper>
+        </TestimonialCardContainer>
     );
 }
 
-const TestimonialCardWrapper = styled.div`
+const TestimonialCardContainer = styled.article`
     background: ${Color.DeepNightBlue};
     width: 400px;
     padding: 1rem;
@@ -57,18 +57,19 @@ const TestimonialProfile = styled.div`
     margin-bottom: 10px;
 `;
 
-const ImageWrapper = styled.div`
+const TestimonialImageWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    img {
-        border-radius: 100%;
-        width: 100%;
-        max-height: 60px;
-    }
 `;
 
-const ProfileDetails = styled.div`
+const TestimonialImage = styled.img`
+    border-radius: 100%;
+    width: 100%;
+    max-height: 60px;
+`;
+
+const TestimonialProfileDetails = styled.div`
     display: flex;
     flex-direction: column;
 `;

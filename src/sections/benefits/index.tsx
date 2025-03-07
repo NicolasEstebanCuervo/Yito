@@ -13,7 +13,7 @@ import BenefitCard from "../../componentes/benefitCard";
 
 export default function Benefits() {
     return (
-        <SectionContainer className="section--benefits">
+        <BenefitsSection as="section" id="benefitsSection">
             <SectionHeader
                 sectionTitle="Why Yito? We're glad you asked…"
                 sectionSubtitle="       Say farewell to flaky freelancers and sayonara to
@@ -22,7 +22,7 @@ export default function Benefits() {
                 overlineText="BENEFITS"
             />
 
-            <BenefitCardsWrapper>
+            <BenefitCardsContainer>
                 <BenefitCard
                     imgSrc={quality}
                     imgAlt="Cards with checkmarks indicating completed tasks, representing a focus on quality work"
@@ -59,12 +59,14 @@ export default function Benefits() {
                     cardHeading="Money where our mouths are"
                     cardContent="We've never had to do it, but if you're not happy after 14 days, you'll get your money back, no questions asked."
                 />
-            </BenefitCardsWrapper>
-        </SectionContainer>
+            </BenefitCardsContainer>
+        </BenefitsSection>
     );
 }
 
-const BenefitCardsWrapper = styled.div`
+const BenefitsSection = styled(SectionContainer)``;
+
+const BenefitCardsContainer = styled.div`
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 2rem;

@@ -4,7 +4,7 @@ import { RightArrowIcon } from "../../assets/SVGIcons";
 import { MediumSmallText, SmallerText, TinyText } from "../../styles/fonts";
 import Button from "../button";
 
-interface BlogCardProps {
+interface IBlogPostProps {
     imgSrc: string;
     imgAlt: string;
     labelText: string;
@@ -12,34 +12,26 @@ interface BlogCardProps {
     cardContent: string;
 }
 
-export default function BlogCard({
+export default function BlogPost({
     imgSrc,
     imgAlt,
     labelText,
     cardHeading,
     cardContent,
-}: BlogCardProps) {
+}: IBlogPostProps) {
     return (
-        <BlogCardWrapper>
+        <BlogCardContainer>
             <BlogCardImage src={imgSrc} alt={imgAlt} />
             <BlogCardContent>
                 <TinyText color={Color.BluePurple}>{labelText}</TinyText>
                 <MediumSmallText>{cardHeading}</MediumSmallText>
                 <SmallerText>{cardContent}</SmallerText>
-
-                <Button
-                    href=""
-                    icon={<RightArrowIcon />}
-                    buttonText="Read more"
-                    justifyContent="flex-start"
-                    textColor={Color.BluePurple}
-                />
             </BlogCardContent>
-        </BlogCardWrapper>
+        </BlogCardContainer>
     );
 }
 
-const BlogCardWrapper = styled.article`
+const BlogCardContainer = styled.article`
     display: flex;
     flex-direction: column;
     gap: 2rem;

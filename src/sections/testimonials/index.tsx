@@ -10,6 +10,7 @@ import {
 import SectionHeader from "../../componentes/sectionHeader";
 import TestimonialCard from "../../componentes/testimonialCard";
 import { SectionContainer } from "../../styles/sectionContainer";
+import { Fragment } from "react/jsx-runtime";
 
 export default function Testimonials() {
     const testimonials = [
@@ -48,9 +49,9 @@ export default function Testimonials() {
     ];
 
     return (
-        <TestimonialsSection>
-            <BackgroundImage src={backgroundPattern} alt="" />
-            <GradientOverlayLeft />
+        <TestimonialsSection as="section">
+            <TestimonialsBackgroundImage src={backgroundPattern} alt="" />
+            <TestimonialsGradientOverlayLeft />
             <SectionHeader
                 sectionTitle="This is why we do what we do"
                 sectionSubtitle="We love our clients - and they´ve got some pretty great things to say about working with us"
@@ -60,23 +61,22 @@ export default function Testimonials() {
                 iconColor={Color.SoftWhite}
             />
 
-            <TestimonialsWrapper>
+            <TestimonialsCardsContainer>
                 {[...testimonials, ...testimonials].map(
-                    (testimonial) => (
-                        <>
+                    (testimonial, index) => (
+                        <Fragment key={index}>
                             <TestimonialCard
-                                key={`${testimonial.name}-1`}
                                 imgSrc={testimonial.image}
                                 imgAlt={testimonial.alt}
                                 customerName={testimonial.name}
                                 customerRole={testimonial.role}
                                 customerComment={testimonial.comment}
                             />
-                        </>
+                        </Fragment>
                     )
                 )}
-            </TestimonialsWrapper>
-            <GradientOverlayRight />
+            </TestimonialsCardsContainer>
+            <TestimonialsGradientOverlayRight />
         </TestimonialsSection>
     );
 }
@@ -89,7 +89,7 @@ const TestimonialsSection = styled(SectionContainer)`
     white-space: pre-wrap;
 `;
 
-const BackgroundImage = styled.img`
+const TestimonialsBackgroundImage = styled.img`
     position: absolute;
     width: 100%;
     z-index: 0;
@@ -97,27 +97,18 @@ const BackgroundImage = styled.img`
     object-fit: cover;
 `;
 
-const TestimonialsWrapper = styled.div`
-    animation: slide 50s linear infinite;
+const TestimonialsCardsContainer = styled.div`
+    animation: slide-left 50s linear infinite;
     display: flex;
     gap: 2rem;
     width: calc(430px * 4);
-
-    @keyframes slide {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-100%);
-        }
-    }
 
     @media (max-width: 500px) {
         width: calc(270px * 4);
     }
 `;
 
-const GradientOverlayLeft = styled.div`
+const TestimonialsGradientOverlayLeft = styled.div`
     background: linear-gradient(
         -90deg,
         rgba(21, 21, 54, 0),
@@ -127,10 +118,10 @@ const GradientOverlayLeft = styled.div`
     height: 100%;
     position: absolute;
     left: 0;
-    z-index: 20;
+    z-index: 5;
 `;
 
-const GradientOverlayRight = styled.div`
+const TestimonialsGradientOverlayRight = styled.div`
     background: linear-gradient(
         90deg,
         rgba(21, 21, 54, 0),
@@ -140,5 +131,5 @@ const GradientOverlayRight = styled.div`
     height: 100%;
     position: absolute;
     right: 0;
-    z-index: 20;
+    z-index: 5;
 `;

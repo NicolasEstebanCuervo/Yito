@@ -38,22 +38,22 @@ export default function Gallery() {
     ];
 
     return (
-        <GallerySection>
-            <GalleryRowWrapper>
+        <GallerySection as="section">
+            <GalleryRowContainer>
                 {[...firstGalleryRowImages, ...firstGalleryRowImages].map(
                     (image, index) => (
                         <GalleryImage key={index} src={image} alt="" />
                     )
                 )}
-            </GalleryRowWrapper>
+            </GalleryRowContainer>
 
-            <GalleryRowWrapper>
+            <GalleryRowContainer>
                 {[...secondGalleryRowImages, ...secondGalleryRowImages].map(
                     (image, index) => (
                         <GalleryImage key={index} src={image} alt="" />
                     )
                 )}
-            </GalleryRowWrapper>
+            </GalleryRowContainer>
         </GallerySection>
     );
 }
@@ -64,7 +64,7 @@ const GallerySection = styled(SectionContainer)`
     white-space: pre-wrap;
 `;
 
-const GalleryRowWrapper = styled.div`
+const GalleryRowContainer = styled.div`
     display: flex;
     gap: 2rem;
     width: calc(330px * 7);
@@ -75,24 +75,6 @@ const GalleryRowWrapper = styled.div`
 
     &:last-child {
         animation: slide-right 50s linear infinite;
-    }
-
-    @keyframes slide-left {
-        from {
-            transform: translateX(0);
-        }
-        to {
-            transform: translateX(-100%);
-        }
-    }
-
-    @keyframes slide-right {
-        from {
-            transform: translateX(-100%);
-        }
-        to {
-            transform: translateX(0);
-        }
     }
 `;
 

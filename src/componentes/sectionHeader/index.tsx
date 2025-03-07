@@ -4,7 +4,7 @@ import { NarrowStarIcon } from "../../assets/SVGIcons";
 import { LargeText, SmallerText } from "../../styles/fonts";
 import OverlineText from "../../componentes/overlineText";
 
-interface SectionHeaderProps {
+interface ISectionHeaderProps {
     sectionTitle: string;
     sectionSubtitle?: string;
     overlineText: string;
@@ -22,21 +22,29 @@ export default function SectionHeader({
     iconColor = Color.BluePurple,
     titleColor = Color.CharcoalGray,
     subtitleColor = Color.SlateGray,
-}: SectionHeaderProps) {
+}: ISectionHeaderProps) {
     return (
-        <SectionHeaderWrapper alignItems={alignItems}>
+        <SectionHeaderContainer alignItems={alignItems}>
             <OverlineText
                 icon={<NarrowStarIcon color={iconColor} />}
                 textColor={iconColor}
                 text={overlineText}
             />
             <LargeText color={titleColor}>{sectionTitle}</LargeText>
-            {sectionSubtitle && <SmallerText color={subtitleColor}>{sectionSubtitle}</SmallerText>}
-        </SectionHeaderWrapper>
+            {sectionSubtitle && (
+                <SmallerText color={subtitleColor}>
+                    {sectionSubtitle}
+                </SmallerText>
+            )}
+        </SectionHeaderContainer>
     );
 }
 
-const SectionHeaderWrapper = styled.article<{ alignItems: "flex-start" | "center" | "flex-end" }>`
+interface ISectionHeaderStylesProps {
+    alignItems: "flex-start" | "center" | "flex-end";
+}
+
+const SectionHeaderContainer = styled.article<ISectionHeaderStylesProps>`
     display: flex;
     flex-direction: column;
     align-items: ${({ alignItems }) => alignItems};

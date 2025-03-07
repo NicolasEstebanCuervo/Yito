@@ -7,7 +7,6 @@ import {
     ThunderboltIcon,
     DiagonalArrowIcon,
 } from "../../assets/SVGIcons";
-import { YitoLogoSVG } from "../../assets/SVGFigures";
 import {
     brymecLogo,
     cloudlineLogo,
@@ -18,15 +17,13 @@ import {
     whiteboxLogo,
     backgroundHeader,
 } from "../../assets/images";
-import {
-    ExtraLargeText,
-    SmallerText,
-    SmallerLinkText,
-} from "../../styles/fonts";
+import { ExtraLargeText, SmallerText } from "../../styles/fonts";
 
 import Button from "../../componentes/button";
 import OverlineText from "../../componentes/overlineText";
 import { SectionContainer } from "../../styles/sectionContainer";
+import Navbar from "../../componentes/navbar";
+import { scrollToSection } from "../../App";
 
 export default function Header() {
     const brandLogos = [
@@ -40,31 +37,9 @@ export default function Header() {
     ];
 
     return (
-        <HeaderSection>
-            <GradientOverlayLeft />
-            <NavWrapper>
-                <NavLinksWrapper>
-                    <LogoWrapper>
-                        <YitoLogoSVG />
-                    </LogoWrapper>
-                    <NavLinks>
-                        <SmallerLinkText href="">How it works</SmallerLinkText>
-                        <SmallerLinkText href="">Benefits</SmallerLinkText>
-                        <SmallerLinkText href="">Portfolio</SmallerLinkText>
-                        <SmallerLinkText href="">Services</SmallerLinkText>
-                        <SmallerLinkText href="">Pricing</SmallerLinkText>
-                    </NavLinks>
-                </NavLinksWrapper>
-
-                <NavButtonWrapper>
-                    <Button
-                        href=""
-                        buttonText="Book a discovery call"
-                        icon={<DiagonalArrowIcon color={Color.CharcoalGray} />}
-                    />
-                </NavButtonWrapper>
-            </NavWrapper>
-
+        <HeaderContainer as="header">
+            <HeaderGradientOverlayLeft />
+            <Navbar />
             <HeaderContent>
                 <OverlineText
                     text="14-day money-back guarantee"
@@ -82,15 +57,15 @@ export default function Header() {
                     Pay one simple monthly fee and skip the hassle of hiring.
                 </SmallerText>
 
-                <ButtonWrapper>
+                <HeaderButtonWrapper>
                     <Button
-                        href=""
+                        onClick={() => scrollToSection("pricingSection")}
                         buttonText="See plans"
                         icon={<DiagonalArrowIcon color={Color.CharcoalGray} />}
                     />
-                </ButtonWrapper>
+                </HeaderButtonWrapper>
 
-                <FeatureList>
+                <HeaderFeatureList>
                     <OverlineText
                         text="Unlimited requests"
                         icon={<InfinityIcon color={Color.SoftWhite} />}
@@ -112,26 +87,26 @@ export default function Header() {
                         letterSpacing="0"
                         textColor={Color.SoftWhite}
                     />
-                </FeatureList>
+                </HeaderFeatureList>
             </HeaderContent>
 
-            <BrandsWrapper>
-                <GalleryWrapper>
+            <HeaderBrandsWrapper>
+                <HeaderBrandsContainer>
                     {[...brandLogos, ...brandLogos].map((image, index) => (
-                        <Image
+                        <HeaderBrandImage
                             key={index}
                             src={image}
                             alt={`${index + 1} logo`}
                         />
                     ))}
-                </GalleryWrapper>
-            </BrandsWrapper>
-            <GradientOverlayRight />
-        </HeaderSection>
+                </HeaderBrandsContainer>
+            </HeaderBrandsWrapper>
+            <HeaderGradientOverlayRight />
+        </HeaderContainer>
     );
 }
 
-const HeaderSection = styled(SectionContainer)`
+const HeaderContainer = styled(SectionContainer)`
     max-width: 100vw;
     overflow: hidden;
     position: relative;
@@ -139,41 +114,7 @@ const HeaderSection = styled(SectionContainer)`
     background: url(${backgroundHeader});
     background-size: cover;
     position: relative;
-`;
-
-const NavWrapper = styled.nav`
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 100%;
-
-    @media (max-width: 800px) {
-        display: none;
-    }
-`;
-
-const NavLinksWrapper = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-`;
-
-const LogoWrapper = styled.div`
-    width: 70px;
-`;
-
-const NavLinks = styled.div`
-    display: flex;
-    align-items: center;
-    gap: 2rem;
-`;
-
-const NavButtonWrapper = styled.div`
-    width: 250px;
-
-    @media (max-width: 1100px) {
-        display: none;
-    }
+    margin-top: 1rem;
 `;
 
 const HeaderContent = styled.section`
@@ -185,7 +126,7 @@ const HeaderContent = styled.section`
     gap: 1rem;
 `;
 
-const ButtonWrapper = styled.div`
+const HeaderButtonWrapper = styled.div`
     margin-top: 1rem;
     width: 150px;
 
@@ -194,7 +135,7 @@ const ButtonWrapper = styled.div`
     }
 `;
 
-const FeatureList = styled.div`
+const HeaderFeatureList = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
@@ -203,25 +144,25 @@ const FeatureList = styled.div`
     flex-wrap: wrap;
 `;
 
-const BrandsWrapper = styled.section`
+const HeaderBrandsWrapper = styled.section`
     overflow: hidden;
 `;
 
-const GalleryWrapper = styled.div`
+const HeaderBrandsContainer = styled.div`
     display: flex;
     gap: 3rem;
     width: calc(178px * 7);
     animation: slide-left 50s linear infinite;
 `;
 
-const Image = styled.img`
+const HeaderBrandImage = styled.img`
     width: 130px;
     object-fit: contain;
     border-radius: 10px;
     flex: 0 0 auto;
 `;
 
-const GradientOverlayLeft = styled.div`
+const HeaderGradientOverlayLeft = styled.div`
     background: linear-gradient(
         -90deg,
         rgba(21, 21, 54, 0),
@@ -232,21 +173,21 @@ const GradientOverlayLeft = styled.div`
     position: absolute;
     left: 0;
     bottom: 0;
-    z-index: 20;
+    z-index: 5;
     border-radius: 10px;
 `;
 
-const GradientOverlayRight = styled.div`
+const HeaderGradientOverlayRight = styled.div`
     background: linear-gradient(
         90deg,
         rgba(21, 21, 54, 0),
         ${Color.BluePurple} 91%
     );
     width: 10%;
-    height: 70%;
+    height: 50%;
     position: absolute;
     right: 0;
     bottom: 0;
-    z-index: 20;
+    z-index: 5;
     border-radius: 10px;
 `;

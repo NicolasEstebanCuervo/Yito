@@ -17,6 +17,24 @@ const globalStyles = css`
             url("/styles/fonts/LensGrotesk.woff") format("woff");
     }
 
+    @keyframes slide-left {
+        from {
+            transform: translateX(0);
+        }
+        to {
+            transform: translateX(-100%);
+        }
+    }
+
+    @keyframes slide-right {
+        from {
+            transform: translateX(-100%);
+        }
+        to {
+            transform: translateX(0);
+        }
+    }
+
     body {
         font-family: "Lens Grotesk", sans-serif;
         overflow-x: hidden;

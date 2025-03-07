@@ -8,10 +8,13 @@ import { SectionContainer } from "../../styles/sectionContainer";
 
 export default function CaseStudy() {
     return (
-        <CaseStudySection>
-            <BackgroundImage src={backgroundPattern} alt="Background pattern" />
+        <CaseStudySection as="section">
+            <CaseStudyBackgroundImage
+                src={backgroundPattern}
+                alt="Background pattern"
+            />
 
-            <ContentWrapper>
+            <CaseStudyContent>
                 <OverlineText
                     text="CASE STUDY"
                     textColor={Color.SoftWhite}
@@ -28,22 +31,22 @@ export default function CaseStudy() {
                     own.”
                 </MediumSmallText>
 
-                <AuthorDetails>
+                <CaseStudyAuthorDetails>
                     <MediumSmallText color={Color.SoftWhite}>
                         Chares Rogers
                     </MediumSmallText>
                     <SmallText color={Color.SoftWhite}>
                         Co-Founder & CEO at Cloudline
                     </SmallText>
-                </AuthorDetails>
-            </ContentWrapper>
+                </CaseStudyAuthorDetails>
+            </CaseStudyContent>
 
-            <ImageWrapper>
-                <img
+            <CaseStudyImageWrapper>
+                <CaseStudyImage
                     src={cloudlineElement}
                     alt="Screenshots of a website showcasing the digital transformation of a brand, highlighting improvements in design, content, and user engagement."
                 />
-            </ImageWrapper>
+            </CaseStudyImageWrapper>
         </CaseStudySection>
     );
 }
@@ -64,18 +67,18 @@ const CaseStudySection = styled(SectionContainer)`
     }
 `;
 
-const BackgroundImage = styled.img`
+const CaseStudyBackgroundImage = styled.img`
     position: absolute;
     width: 100%;
     z-index: 0;
 `;
 
-const ContentWrapper = styled.div`
+const CaseStudyContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 2rem;
     flex: 1;
-    z-index: 10;
+    z-index: 5;
     padding: 3rem;
 
     @media (max-width: 500px) {
@@ -83,21 +86,22 @@ const ContentWrapper = styled.div`
     }
 `;
 
-const AuthorDetails = styled.div`
+const CaseStudyAuthorDetails = styled.div`
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
 `;
 
-const ImageWrapper = styled.div`
+const CaseStudyImageWrapper = styled.div`
     flex: 1;
-    z-index: 10;
-    img {
-        width: 100%;
-        max-height: 500px;
-    }
+    z-index: 5;
 
     @media (min-width: 900px) {
         padding: 3rem 1.5rem;
     }
+`;
+
+const CaseStudyImage = styled.img`
+    width: 100%;
+    max-height: 500px;
 `;

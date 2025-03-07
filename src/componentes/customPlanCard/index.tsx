@@ -2,7 +2,7 @@ import styled from "@emotion/styled";
 import * as Color from "../../styles/colors";
 import { MediumText, MediumSmallText, SmallerText } from "../../styles/fonts";
 
-interface PlanCustomCardProps {
+interface ICustomPlanCardProps {
     icon: React.ReactNode;
     cardTagText: string;
     cardHeading: string;
@@ -11,35 +11,35 @@ interface PlanCustomCardProps {
     cardDuration: string;
 }
 
-export default function PlanCustomCard({
+export default function CustomPlanCard({
     icon,
     cardTagText,
     cardHeading,
     cardContent,
     cardPrice,
     cardDuration,
-}: PlanCustomCardProps) {
+}: ICustomPlanCardProps) {
     return (
-        <PlanCardWrapper>
-            <PlanCardContent>
-                <PlanCardHeader>
+        <CustomPlanCardContainer>
+            <CustomPlanCardContent>
+                <CustomPlanHeader>
                     {icon}
                     <PlanTag>{cardTagText}</PlanTag>
-                </PlanCardHeader>
+                </CustomPlanHeader>
 
                 <MediumSmallText>{cardHeading}</MediumSmallText>
                 <SmallerText>{cardContent}</SmallerText>
-            </PlanCardContent>
+            </CustomPlanCardContent>
 
-            <PlanPriceWrapper>
+            <PriceDetailsWrapper>
                 <MediumText fontWeight={600}>{cardPrice}</MediumText>
                 <SmallerText>{cardDuration}</SmallerText>
-            </PlanPriceWrapper>
-        </PlanCardWrapper>
+            </PriceDetailsWrapper>
+        </CustomPlanCardContainer>
     );
 }
 
-const PlanCardWrapper = styled.article`
+const CustomPlanCardContainer = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -51,13 +51,13 @@ const PlanCardWrapper = styled.article`
     max-width: 350px;
 `;
 
-const PlanCardContent = styled.div`
+const CustomPlanCardContent = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
 `;
 
-const PlanCardHeader = styled.div`
+const CustomPlanHeader = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -71,7 +71,7 @@ const PlanTag = styled.span`
     background: ${Color.BluePurpleTransparent};
 `;
 
-const PlanPriceWrapper = styled.div`
+const PriceDetailsWrapper = styled.div`
     display: flex;
     align-items: flex-end;
 `;

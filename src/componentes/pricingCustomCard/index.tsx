@@ -5,24 +5,25 @@ import { CheckCircleIcon, DiagonalArrowIcon } from "../../assets/SVGIcons";
 import { StraightArrowSVG } from "../../assets/SVGFigures";
 import { MediumSmallText, SmallerText, TinyText } from "../../styles/fonts";
 import Button from "../button";
+import { scrollToSection } from "../../App";
 
-interface ServiceProps {
+interface IServiceProps {
     description: string;
 }
 
-interface PricingCustomCardProps {
+interface IPricingCustomCardProps {
     cardHeading: string;
     cardContent: string;
-    cardServices: ServiceProps[];
+    cardServices: IServiceProps[];
 }
 
 export default function PricingCustomCard({
     cardHeading,
     cardContent,
     cardServices,
-}: PricingCustomCardProps) {
+}: IPricingCustomCardProps) {
     return (
-        <PricingCustomCardWrapper>
+        <PricingCustomCardContainer>
             <StraightArrowSVG />
             <PricingCustomCardContent>
                 <PricingCustomCardHeader>
@@ -34,29 +35,29 @@ export default function PricingCustomCard({
                     </SmallerText>
                 </PricingCustomCardHeader>
 
-                <ServicesList>
+                <PricingCustomCardServicesList>
                     {cardServices.map((service, index) => (
-                        <ServiceItem key={index}>
+                        <PricingCustomCardServiceItem key={index}>
                             <CheckCircleIcon color={Color.SoftWhite} />
                             <TinyText color={Color.SoftWhite}>
                                 {service.description}
                             </TinyText>
-                        </ServiceItem>
+                        </PricingCustomCardServiceItem>
                     ))}
-                </ServicesList>
+                </PricingCustomCardServicesList>
             </PricingCustomCardContent>
 
             <Button
-                href=""
+                onClick={()=>scrollToSection("contactSection")}
                 buttonText="Book a discovery call"
                 icon={<DiagonalArrowIcon color={Color.CharcoalGray} />}
                 backgroundColor={Color.SoftWhite}
             />
-        </PricingCustomCardWrapper>
+        </PricingCustomCardContainer>
     );
 }
 
-const PricingCustomCardWrapper = styled.article`
+const PricingCustomCardContainer = styled.article`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -87,13 +88,13 @@ const PricingCustomCardHeader = styled.div`
     gap: 1rem;
 `;
 
-const ServicesList = styled.div`
+const PricingCustomCardServicesList = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
 `;
 
-const ServiceItem = styled.div`
+const PricingCustomCardServiceItem = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;

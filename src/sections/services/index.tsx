@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { SectionContainer } from "../../styles/sectionContainer";
 import SectionHeader from "../../componentes/sectionHeader";
-import ServiceCard from "../../componentes/serviceCard";
+import ServicesCard from "../../componentes/servicesCard";
 
 export default function Services() {
     const popularServices = [
@@ -38,27 +38,29 @@ export default function Services() {
     ];
 
     return (
-        <SectionContainer className="section--services">
+        <ServicesSection as="section" id="servicesSection">
             <SectionHeader
                 sectionTitle="See what we can do for you"
                 sectionSubtitle="       We're your go-to creative partner, offering a range of services that will elevate your brand and keep things running smoothly."
                 overlineText="SERVICES"
             />
-            <ServiceCardsWrapper>
-                <ServiceCard
+            <ServicesCardsContainer>
+                <ServicesCard
                     cardHeading="Most popular"
                     buttonText="See Example"
                     serviceList={popularServices}
                     hasBackground={true}
-                ></ServiceCard>
-                <ServiceCard serviceList={additionalServices}></ServiceCard>
-                <ServiceCard serviceList={otherServices}></ServiceCard>
-            </ServiceCardsWrapper>
-        </SectionContainer>
+                ></ServicesCard>
+                <ServicesCard serviceList={additionalServices}></ServicesCard>
+                <ServicesCard serviceList={otherServices}></ServicesCard>
+            </ServicesCardsContainer>
+        </ServicesSection>
     );
 }
 
-const ServiceCardsWrapper = styled.div`
+const ServicesSection = styled(SectionContainer)``;
+
+const ServicesCardsContainer = styled.div`
     width: 90%;
     display: flex;
     justify-content: center;

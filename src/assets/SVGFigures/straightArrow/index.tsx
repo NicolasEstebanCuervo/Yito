@@ -23,4 +23,4 @@ const SVG = styled.svg`
     @media (max-width: 900px) {
         display: none;
     }
-`
+`;

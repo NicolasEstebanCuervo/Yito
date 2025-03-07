@@ -7,20 +7,42 @@ import {
 } from "../../assets/SVGIcons";
 import { YitoLogoSVG } from "../../assets/SVGFigures";
 import { SmallerLinkText, TinyText, TinyLinkText } from "../../styles/fonts";
+import { scrollToSection } from "../../App";
 
 export default function Footer() {
     return (
-        <FooterSection>
-            <LogoWrapper>
+        <FooterContainer>
+            <FooterLogoWrapper>
                 <YitoLogoSVG />
-            </LogoWrapper>
-            <FooterLinksWrapper>
+            </FooterLogoWrapper>
+            <FooterLinksContainer>
                 <div>
-                    <SmallerLinkText href="">How it works</SmallerLinkText>
-                    <SmallerLinkText href="">Benefits</SmallerLinkText>
-                    <SmallerLinkText href="">Portfolio</SmallerLinkText>
-                    <SmallerLinkText href="">Services</SmallerLinkText>
-                    <SmallerLinkText href="">Pricing</SmallerLinkText>
+                        <SmallerLinkText
+                            onClick={() => scrollToSection("howItWorksSection")}
+                        >
+                            How it works
+                        </SmallerLinkText>
+
+                        <SmallerLinkText
+                            onClick={() => scrollToSection("benefitsSection")}
+                        >
+                            Benefits
+                        </SmallerLinkText>
+                        <SmallerLinkText
+                            onClick={() => scrollToSection("portfolioSection")}
+                        >
+                            Portfolio
+                        </SmallerLinkText>
+                        <SmallerLinkText
+                            onClick={() => scrollToSection("servicesSection")}
+                        >
+                            Services
+                        </SmallerLinkText>
+                        <SmallerLinkText
+                            onClick={() => scrollToSection("pricingSection")}
+                        >
+                            Pricing
+                        </SmallerLinkText>
                 </div>
 
                 <div>
@@ -28,23 +50,23 @@ export default function Footer() {
                     <InstagramIcon color={Color.SoftWhite} />
                     <LinkedinIcon color={Color.SoftWhite} />
                 </div>
-            </FooterLinksWrapper>
+            </FooterLinksContainer>
 
-            <FooterSeparator />
-            <LegalInfoWrapper>
+            <Divider />
+            <FooterLegalInfoContainer>
                 <TinyText color={Color.LightSilver}>
                     © 2024 Yito. All rights reserved.
                 </TinyText>
                 <div>
-                    <TinyLinkText href="">Terms & Conditions</TinyLinkText>
-                    <TinyLinkText href="">Privacy Policy</TinyLinkText>
+                    <TinyLinkText>Terms & Conditions</TinyLinkText>
+                    <TinyLinkText>Privacy Policy</TinyLinkText>
                 </div>
-            </LegalInfoWrapper>
-        </FooterSection>
+            </FooterLegalInfoContainer>
+        </FooterContainer>
     );
 }
 
-const FooterSection = styled.footer`
+const FooterContainer = styled.footer`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -58,7 +80,7 @@ const FooterSection = styled.footer`
     max-width: 1500px;
 `;
 
-const LogoWrapper = styled.div`
+const FooterLogoWrapper = styled.div`
     width: 80px;
     align-self: start;
 
@@ -67,7 +89,7 @@ const LogoWrapper = styled.div`
     }
 `;
 
-const FooterLinksWrapper = styled.div`
+const FooterLinksContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
@@ -79,27 +101,25 @@ const FooterLinksWrapper = styled.div`
         align-items: center;
         gap: 1rem;
 
-        :nth-child(1) {
-        @media (max-width: 650px) {
-            flex-direction: column;
+        :nth-child-type(1) {
+            @media (max-width: 650px) {
+                flex-direction: column;
+            }
         }
     }
-    }
-
-
 
     @media (max-width: 900px) {
         flex-direction: column;
     }
 `;
 
-const FooterSeparator = styled.div`
+const Divider = styled.div`
     width: 100%;
     height: 1px;
     background: rgba(255, 255, 255, 0.18);
 `;
 
-const LegalInfoWrapper = styled.div`
+const FooterLegalInfoContainer = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;

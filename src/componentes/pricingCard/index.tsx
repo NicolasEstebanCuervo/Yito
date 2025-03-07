@@ -10,20 +10,21 @@ import {
 } from "../../styles/fonts";
 import Button from "../button";
 import { ReactNode } from "react";
+import { scrollToSection } from "../../App";
 
-interface ServiceProps {
+interface IServiceProps {
     icon: ReactNode;
     description: string;
 }
 
-interface PricingCardProps {
+interface IPricingCardProps {
     cardTagText: string;
     cardHeading: string;
     cardContent: string;
     cardPrice: string | number;
     cardDuration: string;
     cardPlanTitle: string;
-    cardServices: ServiceProps[];
+    cardServices: IServiceProps[];
     borderColor: string;
 }
 
@@ -36,9 +37,9 @@ export default function PricingCard({
     cardPlanTitle,
     cardServices,
     borderColor,
-}: PricingCardProps) {
+}: IPricingCardProps) {
     return (
-        <PricingCardWrapper borderColor={borderColor}>
+        <PricingCardContainer borderColor={borderColor}>
             <PricingCardContent>
                 <PricingCardHeader>
                     <MediumSmallText>{cardHeading}</MediumSmallText>
@@ -49,13 +50,13 @@ export default function PricingCard({
 
                 <SmallerText>{cardContent}</SmallerText>
 
-                <PricingDetails>
+                <PriceDetailsWrapper>
                     <LargeText fontWeight={600}>{cardPrice}</LargeText>
                     <SmallerText>{cardDuration}</SmallerText>
-                </PricingDetails>
+                </PriceDetailsWrapper>
 
                 <Button
-                    href=""
+                    onClick={()=>scrollToSection("contactSection")}
                     buttonText="Book a discovery call"
                     icon={<DiagonalArrowIcon color={Color.SoftWhite} />}
                     backgroundColor={Color.BluePurple}
@@ -64,20 +65,23 @@ export default function PricingCard({
 
                 <SmallText fontWeight={600}>{cardPlanTitle}</SmallText>
 
-                <PricingServicesList>
+                <PricingCardServicesList>
                     {cardServices.map((service, index) => (
-                        <PricingServiceItem key={index}>
+                        <PricingCardServiceItem key={index}>
                             {service.icon}
                             <TinyText>{service.description}</TinyText>
-                        </PricingServiceItem>
+                        </PricingCardServiceItem>
                     ))}
-                </PricingServicesList>
+                </PricingCardServicesList>
             </PricingCardContent>
-        </PricingCardWrapper>
+        </PricingCardContainer>
     );
 }
 
-const PricingCardWrapper = styled.article<{ borderColor: string }>`
+interface IPricingCardStylesProps {
+    borderColor: string;
+}
+const PricingCardContainer = styled.article<IPricingCardStylesProps>`
     display: flex;
     flex-direction: column;
     gap: 3rem;
@@ -114,18 +118,18 @@ const PricingBadge = styled.span<{ borderColor: string }>`
     background: ${({ borderColor }) => `${borderColor}24`};
 `;
 
-const PricingDetails = styled.div`
+const PriceDetailsWrapper = styled.div`
     display: flex;
     align-items: flex-end;
 `;
 
-const PricingServicesList = styled.div`
+const PricingCardServicesList = styled.div`
     display: flex;
     flex-direction: column;
     gap: 1rem;
 `;
 
-const PricingServiceItem = styled.div`
+const PricingCardServiceItem = styled.div`
     display: flex;
     align-items: center;
     gap: 10px;

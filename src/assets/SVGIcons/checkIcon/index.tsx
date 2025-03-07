@@ -13,9 +13,9 @@ export const CheckIcon = ({ color = Color.BluePurple }: { color?: string }) => (
                 id="Vector"
                 d="M10.5 3L5 8.5L2.5 6"
                 stroke={color}
-                stroke-width="1.5"
-                stroke-linecap="round"
-                stroke-linejoin="round"
+                strokeWidth="1.5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
             ></path>
         </g>
     </svg>

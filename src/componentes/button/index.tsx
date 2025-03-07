@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import * as Color from "../../styles/colors";
 import { ReactNode } from "react";
 
-interface ButtonProps {
-    href: string;
-    buttonText: string; 
+interface IButtonProps {
+    onClick: () => void;
+    buttonText: string;
     icon?: ReactNode;
     backgroundColor?: string;
     textColor?: string;
@@ -13,17 +13,17 @@ interface ButtonProps {
 }
 
 export default function Button({
-    href,
+    onClick,
     buttonText,
     icon,
     backgroundColor = Color.White,
     textColor = Color.CharcoalGray,
     borderColor,
     justifyContent = "center",
-}: ButtonProps) {
+}: IButtonProps) {
     return (
-        <ButtonWrapper
-            href={href}
+        <ButtonContainer
+            onClick={onClick}
             backgroundColor={backgroundColor}
             textColor={textColor}
             borderColor={borderColor}
@@ -31,16 +31,18 @@ export default function Button({
         >
             {buttonText}
             {icon}
-        </ButtonWrapper>
+        </ButtonContainer>
     );
 }
 
-const ButtonWrapper = styled.a<{
+interface IButtonStylesProps {
     backgroundColor: string;
     textColor: string;
     borderColor?: string;
     justifyContent?: string;
-}>`
+}
+
+const ButtonContainer = styled.button<IButtonStylesProps>`
     cursor: pointer;
     display: flex;
     justify-content: center;

@@ -4,7 +4,7 @@ import { MinusCircleIcon, PlusCircleIcon } from "../../assets/SVGIcons";
 import { SmallerText, TinyText } from "../../styles/fonts";
 import { ReactNode } from "react";
 
-interface AccordionCardProps {
+interface IAccordionCardProps {
     cardId: number;
     isActive: boolean;
     onClick: (cardId: number) => void;
@@ -18,28 +18,35 @@ export const AccordionCard = ({
     onClick,
     cardHeading,
     cardContent,
-}: AccordionCardProps) => {
+}: IAccordionCardProps) => {
     return (
-        <AccordionCardWrapper onClick={() => onClick(cardId)} active={isActive}>
+        <AccordionCardContainer
+            onClick={() => onClick(cardId)}
+            active={isActive}
+        >
             <AccordionCardHeader>
                 <SmallerText color={Color.CharcoalGray}>
                     {cardHeading}
                 </SmallerText>
                 <IconWrapper>
-                {isActive ? (
-                    <MinusCircleIcon />
-                ) : (
-                    <PlusCircleIcon color={Color.CharcoalGray} />
-                )}
+                    {isActive ? (
+                        <MinusCircleIcon />
+                    ) : (
+                        <PlusCircleIcon color={Color.CharcoalGray} />
+                    )}
                 </IconWrapper>
             </AccordionCardHeader>
 
             {isActive && <TinyText>{cardContent}</TinyText>}
-        </AccordionCardWrapper>
+        </AccordionCardContainer>
     );
 };
 
-const AccordionCardWrapper = styled.article<{ active: boolean }>`
+interface IAccordionCardStylesProps {
+    active: boolean;
+}
+
+const AccordionCardContainer = styled.article<IAccordionCardStylesProps>`
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -65,4 +72,4 @@ const AccordionCardHeader = styled.div`
 
 const IconWrapper = styled.div`
     min-width: 30px;
-`
+`;

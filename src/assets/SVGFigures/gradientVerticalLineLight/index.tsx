@@ -14,7 +14,7 @@ export const GradientVerticalLineLightSVG = () => (
             x2="2.69529"
             y2="6.65235e-08"
             stroke="url(#paint0_linear_398_31857)"
-            stroke-width="4"
+            strokeWidth="4"
         ></line>
         <defs>
             <linearGradient
@@ -25,8 +25,8 @@ export const GradientVerticalLineLightSVG = () => (
                 y2="-1.66311e-08"
                 gradientUnits="userSpaceOnUse"
             >
-                <stop stop-color="#E1E2F5" stop-opacity="0"></stop>
-                <stop offset="1" stop-color="#4747D7"></stop>
+                <stop stopColor="#E1E2F5" stopOpacity="0"></stop>
+                <stop offset="1" stopColor="#4747D7"></stop>
             </linearGradient>
         </defs>
     </SVG>
@@ -37,4 +37,3 @@ const SVG = styled.svg`
         display: none;
     }
 `;
-

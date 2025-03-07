@@ -3,22 +3,23 @@ import * as Color from "../../styles/colors";
 import { CurveArrowSVG } from "../../assets/SVGFigures";
 import { MediumSmallText, SmallText } from "../../styles/fonts";
 import Button from "../button";
+import { scrollToSection } from "../../App";
 
-interface ServiceCardProps {
+interface IServicesCardProps {
     cardHeading?: string;
     serviceList: string[];
     buttonText?: string;
     hasBackground?: boolean;
 }
 
-export default function ServiceCard({
+export default function ServicesCard({
     cardHeading,
     serviceList,
     buttonText,
     hasBackground = false,
-}: ServiceCardProps) {
+}: IServicesCardProps) {
     return (
-        <ServiceCardWrapper hasBackground={hasBackground}>
+        <ServiceCardContainer hasBackground={hasBackground}>
             {cardHeading && (
                 <MediumSmallText color={Color.SoftWhite}>
                     {cardHeading}
@@ -29,7 +30,6 @@ export default function ServiceCard({
 
             <ServicesList>
                 {serviceList.map((service, index) => (
-                    <>
                     <ServiceItem key={index}>
                         <SmallText
                             color={
@@ -44,16 +44,24 @@ export default function ServiceCard({
                             <Divider hasBackground={hasBackground} />
                         )}
                     </ServiceItem>
-                    </>
                 ))}
             </ServicesList>
 
-            {buttonText && <Button href="" buttonText={buttonText} />}
-        </ServiceCardWrapper>
+            {buttonText && (
+                <Button
+                    onClick={() => scrollToSection("portfolioSection")}
+                    buttonText={buttonText}
+                />
+            )}
+        </ServiceCardContainer>
     );
 }
 
-const ServiceCardWrapper = styled.div<{ hasBackground: boolean }>`
+interface IServicesCardStylesProps {
+    hasBackground: boolean;
+}
+
+const ServiceCardContainer = styled.div<IServicesCardStylesProps>`
     display: flex;
     flex-direction: column;
     justify-content: center;

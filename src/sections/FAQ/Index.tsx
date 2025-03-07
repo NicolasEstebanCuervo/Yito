@@ -4,7 +4,7 @@ import { TinyText } from "../../styles/fonts";
 import { SectionContainer } from "../../styles/sectionContainer";
 import SectionHeader from "../../componentes/sectionHeader";
 import { AccordionCard } from "../../componentes/accordionCard";
-import { useState } from "react";
+import { Fragment, useState } from "react";
 
 export default function FAQ() {
     const [activeCard, setActiveCard] = useState<number | null>(null);
@@ -146,28 +146,32 @@ export default function FAQ() {
     ];
 
     return (
-        <SectionContainer className="section--FAQ">
+        <FAQSection as="section">
             <SectionHeader
                 sectionTitle="Your questions answered"
                 overlineText="FAQ"
             />
 
-            <FaqList>
+            <FAQList>
                 {faqItems.map((card, index) => (
-                    <AccordionCard
-                        cardHeading={card.title}
-                        cardContent={card.description}
-                        cardId={index + 1}
-                        isActive={activeCard === index + 1}
-                        onClick={handleCardClick}
-                    />
+                    <Fragment key={index}>
+                        <AccordionCard
+                            cardHeading={card.title}
+                            cardContent={card.description}
+                            cardId={index + 1}
+                            isActive={activeCard === index + 1}
+                            onClick={handleCardClick}
+                        />
+                    </Fragment>
                 ))}
-            </FaqList>
-        </SectionContainer>
+            </FAQList>
+        </FAQSection>
     );
 }
 
-const FaqList = styled.div`
+const FAQSection = styled(SectionContainer)``;
+
+const FAQList = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;

@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import * as Color from "../colors";
 
-export const SectionContainer = styled.section`
+export const SectionContainer = styled.div`
     display: flex;
     flex-direction: column;
     justify-content: center;
